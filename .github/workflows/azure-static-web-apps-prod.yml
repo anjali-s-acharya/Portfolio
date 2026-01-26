@@ -3,7 +3,7 @@ name: Deploy Vite App to Azure Static Web Apps (Prod)
 on:
   push:
     branches:
-      - prod
+      - main
 
 jobs:
   build_and_deploy:
