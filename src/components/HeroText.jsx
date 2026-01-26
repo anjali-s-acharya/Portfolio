@@ -2,7 +2,7 @@ import { FlipWords } from "./FlipWords";
 import { motion } from "motion/react";
 
 const HeroText = () => {
-    const words = ["Innovative", "Creative", "Reliable", "Efficient"];
+    const words = ["Scalable", "Stable", "Reliable", "Efficient"];
     const variants = {
         hidden: { opacity: 0, x: -50 },
         visible: { opacity: 1, x: 0 },
@@ -15,14 +15,14 @@ const HeroText = () => {
                 variants={variants} 
                 initial="hidden"
                 animate="visible"
-                transition={{ delay: 1 }}>Hi, I'm Anjali</motion.h1>
+                transition={{ delay: 1 }}>Hey, I'm Anjali.</motion.h1>
                 <div className="flex flex-col items-start">
                     <motion.p className="text-5xl font-medium text-neutral-300" 
                     variants={variants}
                     initial="hidden"
                     animate="visible"
                     transition={{ delay: 1.2 }}>
-                    A Developer <br/> Dedicated to Build</motion.p>
+                    DevOps Engineer<br/> focused on building</motion.p>
                     <motion.div variants={variants}
                     initial="hidden"
                     animate="visible"
@@ -33,7 +33,7 @@ const HeroText = () => {
                     variants={variants}
                     initial="hidden"
                     animate="visible"
-                    transition={{ delay: 1.8 }}>Solutions</motion.p>
+                    transition={{ delay: 1.8 }}>Infrastructure</motion.p>
                 </div>
             </div>
             {/* MobileView */}
@@ -42,7 +42,7 @@ const HeroText = () => {
                     <motion.p className="text-5xl font-black text-neutral-300" variants={variants}
                     initial="hidden"
                     animate="visible"
-                    transition={{ delay: 1 }}>Hi, I'm Anjali</motion.p>
+                    transition={{ delay: 1 }}>Hey, I'm Anjali.</motion.p>
                     <div>
                         <motion.p className="text-5xl font-black text-neutral-300" 
                         variants={variants}
@@ -59,7 +59,7 @@ const HeroText = () => {
                     <motion.p className="text-4xl font-medium text-neutral-300" variants={variants}
                     initial="hidden"
                     animate="visible"
-                    transition={{ delay: 1.8 }}>Solutions</motion.p>
+                    transition={{ delay: 1.8 }}>Infrastructure</motion.p>
                 </div>
             </div>
         </div>

@@ -214,7 +214,7 @@ platforms to reduce operational overhead and improve system reliability.
             </p>
             <p className="mt-2 text-sm text-neutral-300">
               I'm based in India, and work with global teams across different
-              time zones to ensure seamless collaboration.
+              time zones to ensure seamless deliverables.
             </p>
           </div>
           <figure className="absolute left-[30%] top-[10%] group-hover:scale-110 transition-transform duration-700">
@@ -235,7 +235,7 @@ platforms to reduce operational overhead and improve system reliability.
             transition={{ type: "spring", stiffness: 300 }}
           >
             <p className="text-2xl font-bold text-center text-transparent md:text-3xl bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">
-              Do you want to collaborate?
+              Get in touch at
             </p>
             <CopyEmailButton />
           </motion.div>
