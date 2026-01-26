@@ -2,6 +2,9 @@ import React from 'react';
 import Navbar from './section/Navbar';
 import Hero from './section/Hero';
 import About from './section/About';
+import Projects from './section/Projects';
+import Experience from './section/Experiences';
+import Contact from './section/Contact';
 
 const App = () => {
   return ( 
@@ -9,16 +12,9 @@ const App = () => {
     <Navbar />
     <Hero />
     <About />
-    <section className="min-h-screen" />
-    <section className="min-h-screen" />
-    <section className="min-h-screen" />
-    <section className="min-h-screen" />
-    <section className="min-h-screen" />
-    {/* about */}
-    {/* experience */}
-    {/* work */}
-    {/* contact */}
-    {/* footer */}
+    {/*<Projects />*/}
+    <Experience />
+    <Contact  />
     </div>
   );
 };
