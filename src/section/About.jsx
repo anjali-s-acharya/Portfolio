@@ -1,9 +1,11 @@
 import { useRef } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Card from "../components/Card";
-import { Globe } from "../components/globe";
+import { Globe, GLOBE_THEME_CONFIG } from "../components/globe";
 import CopyEmailButton from "../components/CopyEmailButton";
 import { Frameworks } from "../components/Frameworks";
+import SectionHeading from "../components/SectionHeading";
+import IntroTerminal from "../components/IntroTerminal";
 
 const About = () => {
   const grid2Container = useRef();
@@ -41,22 +43,7 @@ const About = () => {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl" />
       </div>
 
-      <motion.h2 
-        className="text-heading"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        About Me
-      </motion.h2>
-      <motion.div 
-        className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent mt-12 h-[1px] w-full mb-16"
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      />
+      <SectionHeading>About Me</SectionHeading>
 
       <motion.div
         className="grid grid-cols-1 gap-5 md:grid-cols-6 md:auto-rows-[18rem]"
@@ -69,21 +56,21 @@ const About = () => {
         <motion.div 
           className="relative flex items-end overflow-hidden border grid-1 group border-white/10 rounded-3xl bg-gradient-to-br from-neutral-900/80 to-neutral-800/50 backdrop-blur-sm"
           variants={itemVariants}
-          whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(168, 85, 247, 0.2)" }}
+          whileHover={{ scale: 1.02, y: -6, boxShadow: "0 20px 40px rgba(168, 85, 247, 0.2)" }}
           transition={{ type: "spring", stiffness: 300 }}
         >
           <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-cyan-500/5" />
-          <img
-            src="assets/coding-pov.png"
-            className="absolute scale-[1.75] -right-[5rem] -top-[1rem] md:scale-[3] md:left-50 md:inset-y-10 lg:scale-[2.5] transition-transform duration-700 group-hover:scale-[2.6]"
-          />
+          <div className="absolute z-0 hidden pt-8 pr-8 top-2 right-2 sm:flex opacity-90 transition-all duration-500 group-hover:opacity-100 group-hover:-translate-y-1">
+            <IntroTerminal />
+          </div>
           <div className="relative z-10 p-6">
             <p className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
               Hi, I'm Anjali
             </p>
             <p className="mt-2 text-base text-neutral-300">
-              DevOps with 2+ years of experience designing and automating scalable infrastructure and internal
-platforms to reduce operational overhead and improve system reliability.
+              Software Engineer with 3 years of experience building network automation, observability,
+              and AI-driven operational tools — from MCP-powered LLM integrations to telemetry-driven
+              workflows that improve network visibility and operational efficiency.
             </p>
           </div>
           <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-indigo/80" />
@@ -93,7 +80,7 @@ platforms to reduce operational overhead and improve system reliability.
         <motion.div 
           className="relative overflow-hidden border grid-2 border-white/10 rounded-3xl bg-gradient-to-br from-neutral-900/80 to-neutral-800/50 backdrop-blur-sm group"
           variants={itemVariants}
-          whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(168, 85, 247, 0.2)" }}
+          whileHover={{ scale: 1.02, y: -6, boxShadow: "0 20px 40px rgba(168, 85, 247, 0.2)" }}
         >
           <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-cyan-500/5" />
           
@@ -112,85 +99,88 @@ platforms to reduce operational overhead and improve system reliability.
               CODE IS CRAFT
             </motion.p>
             
-            {/* Top Row - Left to Right */}
+            {/* Top Row */}
             <Card
-              style={{ rotate: "12deg", top: "5%", left: "8%" }}
+              index={0}
+              rotate={12}
+              position={{ top: "5%", left: "8%" }}
               text="Team Player"
               containerRef={grid2Container}
             />
             <Card
-              style={{ rotate: "-8deg", top: "3%", left: "35%" }}
+              index={1}
+              rotate={-8}
+              position={{ top: "3%", left: "35%" }}
               text="Agile"
               containerRef={grid2Container}
             />
             <Card
-              style={{ rotate: "15deg", top: "5%", right: "8%" }}
-              image="assets/logos/python-svgrepo-com.svg"
+              index={2}
+              rotate={15}
+              position={{ top: "5%", right: "8%" }}
+              text="Automation"
               containerRef={grid2Container}
             />
-            
-            {/* Middle-Top Row */}
 
+            {/* Upper area */}
             <Card
-              style={{ rotate: "10deg", top: "25%", right: "3%" }}
+              index={3}
+              rotate={10}
+              position={{ top: "25%", right: "3%" }}
               text="Fast Learner"
               containerRef={grid2Container}
             />
-            
-            {/* Middle Row */}
             <Card
-              style={{ rotate: "-15deg", top: "70%", left: "55%" }}
-              image="assets/logos/react.svg"
+              index={4}
+              rotate={20}
+              position={{ top: "15%", right: "32%" }}
+              text="AIOps"
               containerRef={grid2Container}
             />
             <Card
-              style={{ rotate: "8deg", top: "50%", right: "20%" }}
-              image="assets/logos/django-svgrepo-com.svg"
+              index={5}
+              rotate={8}
+              position={{ top: "42%", right: "26%" }}
+              text="Telemetry"
               containerRef={grid2Container}
             />
-            
-            {/* Middle-Bottom Row */}
+
+            {/* Lower area */}
             <Card
-              style={{ rotate: "12deg", bottom: "45%", left: "5%" }}
+              index={6}
+              rotate={12}
+              position={{ bottom: "45%", left: "5%" }}
               text="Problem Solver"
               containerRef={grid2Container}
             />
             <Card
-              style={{ rotate: "-10deg", bottom: "28%", right: "5%" }}
+              index={7}
+              rotate={-10}
+              position={{ bottom: "28%", right: "5%" }}
               text="Adaptable"
               containerRef={grid2Container}
             />
-            
+            <Card
+              index={8}
+              rotate={10}
+              position={{ bottom: "28%", left: "50%" }}
+              text="MCP"
+              containerRef={grid2Container}
+            />
+
             {/* Bottom Row */}
             <Card
-              style={{ rotate: "-12deg", bottom: "5%", left: "10%" }}
+              index={9}
+              rotate={-12}
+              position={{ bottom: "5%", left: "10%" }}
               text="Critical Thinking"
               containerRef={grid2Container}
             />
             <Card
-              style={{ rotate: "8deg", bottom: "3%", left: "38%" }}
+              index={10}
+              rotate={8}
+              position={{ bottom: "3%", left: "38%" }}
               text="CI/CD"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "-15deg", bottom: "5%", right: "10%" }}
-              image="assets/logos/visualstudiocode.svg"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "10deg", bottom: "28%", left: "50%" }}
-              image="assets/logos/icons8-c++.svg"
-              containerRef={grid2Container}
-            />
-            
-            <Card
-              style={{ rotate: "20deg", top: "15%", right: "32%" }}
-              image="assets/logos/CopilotStudio_scalable.svg"
-              containerRef={grid2Container}
-            />
-            <Card
-              style={{ rotate: "-12deg", bottom: "35%", left: "33%" }}
-              image="assets/logos/PowerAutomate_scalable.svg"
               containerRef={grid2Container}
             />
           </div>
@@ -205,7 +195,7 @@ platforms to reduce operational overhead and improve system reliability.
         <motion.div 
           className="relative overflow-hidden border grid-3 group border-white/10 rounded-3xl bg-gradient-to-br from-black/90 to-neutral-900/80 backdrop-blur-sm"
           variants={itemVariants}
-          whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(6, 182, 212, 0.2)" }}
+          whileHover={{ scale: 1.02, y: -6, boxShadow: "0 20px 40px rgba(6, 182, 212, 0.2)" }}
         >
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5" />
           <div className="relative z-10 p-6 w-[50%]">
@@ -218,7 +208,7 @@ platforms to reduce operational overhead and improve system reliability.
             </p>
           </div>
           <figure className="absolute left-[30%] top-[10%] group-hover:scale-110 transition-transform duration-700">
-            <Globe />
+            <Globe config={GLOBE_THEME_CONFIG} />
           </figure>
         </motion.div>
 
@@ -226,7 +216,7 @@ platforms to reduce operational overhead and improve system reliability.
         <motion.div 
           className="relative overflow-hidden border grid-4 group border-white/10 rounded-3xl bg-gradient-to-br from-purple-900/40 via-pink-900/30 to-indigo-900/40 backdrop-blur-sm"
           variants={itemVariants}
-          whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(168, 85, 247, 0.3)" }}
+          whileHover={{ scale: 1.02, y: -6, boxShadow: "0 20px 40px rgba(168, 85, 247, 0.3)" }}
         >
           <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10" />
           <motion.div 
@@ -258,7 +248,7 @@ platforms to reduce operational overhead and improve system reliability.
         <motion.div 
           className="relative overflow-hidden border grid-5 group border-white/10 rounded-3xl bg-gradient-to-br from-neutral-900/80 to-neutral-800/50 backdrop-blur-sm"
           variants={itemVariants}
-          whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(168, 85, 247, 0.2)" }}
+          whileHover={{ scale: 1.02, y: -6, boxShadow: "0 20px 40px rgba(168, 85, 247, 0.2)" }}
         >
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5" />
           <div className="relative z-10 p-6 w-[50%]">

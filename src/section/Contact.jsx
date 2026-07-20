@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "motion/react";
 import emailjs from "@emailjs/browser";
 import Alert from "../components/Alert";
 import { Particles } from "../components/Particles";
-import { Globe } from "../components/globe";
+import { Globe, GLOBE_THEME_CONFIG } from "../components/globe";
+import { mySocials } from "../constants";
+import SectionHeading from "../components/SectionHeading";
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -63,14 +65,13 @@ const Contact = () => {
         className="absolute inset-0 -z-50"
         quantity={100}
         ease={80}
-        color={"#ffffff"}
+        colors={["#7a57db", "#33c2cc"]}
         refresh
       />
       {showAlert && <Alert type={alertType} text={alertMessage} />}
-      
-      <h2 className="text-heading">Contact Me</h2>
-      <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent mt-12 h-[1px] w-full mb-16" />
-      
+
+      <SectionHeading>Contact Me</SectionHeading>
+
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20">
           {/* Enhanced Globe with custom config - Animated from left */}
@@ -78,7 +79,7 @@ const Contact = () => {
             className="hidden lg:block w-full lg:w-1/2 max-w-lg"
             initial={{ x: -200, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <div className="relative group">
@@ -88,35 +89,9 @@ const Contact = () => {
               
               {/* Globe container with custom styling */}
               <div className="relative z-10 rounded-full overflow-hidden">
-                <Globe 
-                  className="w-full h-auto scale-110 group-hover:scale-115 transition-transform duration-700" 
-                  config={{
-                    width: 800,
-                    height: 800,
-                    onRender: () => {},
-                    devicePixelRatio: 2,
-                    phi: 0,
-                    theta: 0.3,
-                    dark: 1,
-                    diffuse: 1.2,
-                    mapSamples: 16000,
-                    mapBrightness: 6,
-                    baseColor: [0.3, 0.3, 0.3],
-                    markerColor: [0.1, 0.8, 1],
-                    glowColor: [0.2, 0.5, 1],
-                    markers: [
-                      { location: [14.5995, 120.9842], size: 0.03 },
-                      { location: [19.076, 72.8777], size: 0.1 },
-                      { location: [23.8103, 90.4125], size: 0.05 },
-                      { location: [30.0444, 31.2357], size: 0.07 },
-                      { location: [39.9042, 116.4074], size: 0.08 },
-                      { location: [-23.5505, -46.6333], size: 0.1 },
-                      { location: [19.4326, -99.1332], size: 0.1 },
-                      { location: [40.7128, -74.006], size: 0.1 },
-                      { location: [34.6937, 135.5022], size: 0.05 },
-                      { location: [41.0082, 28.9784], size: 0.06 },
-                    ],
-                  }}
+                <Globe
+                  className="w-full h-auto scale-110 group-hover:scale-115 transition-transform duration-700"
+                  config={GLOBE_THEME_CONFIG}
                 />
               </div>
             </div>
@@ -127,15 +102,30 @@ const Contact = () => {
             className="flex flex-col items-center justify-center w-full lg:w-1/2 max-w-md p-5 border border-white/10 rounded-2xl bg-primary"
             initial={{ x: 200, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
         <div className="flex flex-col items-start w-full gap-5 mb-10">
           <h2 className="text-heading">Let's Talk</h2>
           <p className="font-normal text-neutral-400">
-            Whether you're looking to build a new website, improve your existing
-            platform, or bring a unique project to life, I'm here to help
+            Hiring for a network automation, DevOps, or AI-driven ops role? Want to
+            talk shop about MCP and LLM-assisted troubleshooting? I'd love to hear
+            from you.
           </p>
+          <div className="flex gap-3">
+            {mySocials.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label={social.name}
+                className="flex items-center justify-center border rounded-full size-11 border-white/10 bg-white/5 hover-animation hover:bg-white/10"
+              >
+                <img src={social.icon} className="size-5 brightness-0 invert" alt="" />
+              </a>
+            ))}
+          </div>
         </div>
         <form className="w-full" onSubmit={handleSubmit}>
           <div className="mb-5">

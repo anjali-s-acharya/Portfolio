@@ -1,6 +1,7 @@
 "use client";
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useScroll, useTransform, motion } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
+import SectionHeading from "./SectionHeading";
 
 export const Timeline = ({ data }) => {
   const ref = useRef(null);
@@ -30,9 +31,8 @@ export const Timeline = ({ data }) => {
         <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
       </div>
 
-      <h2 className="text-heading">My Journey</h2>
-      <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent mt-12 h-[1px] w-full mb-16" />
-      
+      <SectionHeading>My Journey</SectionHeading>
+
       <div ref={ref} className="relative pb-20">
         {data.map((item, index) => (
           <motion.div

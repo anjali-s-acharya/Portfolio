@@ -1,4 +1,5 @@
 import { twMerge } from "tailwind-merge";
+import { useReducedMotion } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 
 function MousePosition() {
@@ -47,6 +48,7 @@ export const Particles = ({
   size = 0.4,
   refresh = false,
   color = "#ffffff",
+  colors,
   vx = 0,
   vy = 0,
   ...props
@@ -61,13 +63,16 @@ export const Particles = ({
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
   const rafID = useRef(null);
   const resizeTimeout = useRef(null);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext("2d");
     }
     initCanvas();
-    animate();
+    if (!prefersReducedMotion) {
+      animate();
+    }
 
     const handleResize = () => {
       if (resizeTimeout.current) {
@@ -89,7 +94,7 @@ export const Particles = ({
       }
       window.removeEventListener("resize", handleResize);
     };
-  }, [color]);
+  }, [color, colors, prefersReducedMotion]);
 
   useEffect(() => {
     onMouseMove();
@@ -138,17 +143,20 @@ export const Particles = ({
     }
   };
 
+  const rgbPalette = (colors && colors.length ? colors : [color]).map(hexToRgb);
+
   const circleParams = () => {
     const x = Math.floor(Math.random() * canvasSize.current.w);
     const y = Math.floor(Math.random() * canvasSize.current.h);
     const translateX = 0;
     const translateY = 0;
     const pSize = Math.floor(Math.random() * 2) + size;
-    const alpha = 0;
     const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
+    const alpha = prefersReducedMotion ? targetAlpha : 0;
     const dx = (Math.random() - 0.5) * 0.1;
     const dy = (Math.random() - 0.5) * 0.1;
     const magnetism = 0.1 + Math.random() * 4;
+    const rgb = rgbPalette[Math.floor(Math.random() * rgbPalette.length)];
     return {
       x,
       y,
@@ -160,14 +168,13 @@ export const Particles = ({
       dx,
       dy,
       magnetism,
+      rgb,
     };
   };
 
-  const rgb = hexToRgb(color);
-
   const drawCircle = (circle, update = false) => {
     if (context.current) {
-      const { x, y, translateX, translateY, size, alpha } = circle;
+      const { x, y, translateX, translateY, size, alpha, rgb } = circle;
       context.current.translate(translateX, translateY);
       context.current.beginPath();
       context.current.arc(x, y, size, 0, 2 * Math.PI);

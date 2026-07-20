@@ -1,7 +1,7 @@
 "use client";
 
 import createGlobe from "cobe";
-import { useMotionValue, useSpring } from "motion/react";
+import { useMotionValue, useReducedMotion, useSpring } from "motion/react";
 import { useEffect, useRef } from "react";
 
 import { twMerge } from "tailwind-merge";
@@ -36,12 +36,22 @@ const GLOBE_CONFIG = {
   ],
 };
 
+export const GLOBE_THEME_CONFIG = {
+  ...GLOBE_CONFIG,
+  diffuse: 1.2,
+  mapBrightness: 6,
+  baseColor: [0.3, 0.3, 0.3],
+  markerColor: [0.1, 0.8, 1],
+  glowColor: [0.2, 0.5, 1],
+};
+
 export function Globe({ className, config = GLOBE_CONFIG }) {
   let phi = 0;
   let width = 0;
   const canvasRef = useRef(null);
   const pointerInteracting = useRef(null);
   const pointerInteractionMovement = useRef(0);
+  const prefersReducedMotion = useReducedMotion();
 
   const r = useMotionValue(0);
   const rs = useSpring(r, {
@@ -80,7 +90,7 @@ export function Globe({ className, config = GLOBE_CONFIG }) {
       width: width * 2,
       height: width * 2,
       onRender: (state) => {
-        if (!pointerInteracting.current) phi += 0.005;
+        if (!pointerInteracting.current && !prefersReducedMotion) phi += 0.005;
         state.phi = phi + rs.get();
         state.width = width * 2;
         state.height = width * 2;
@@ -92,7 +102,7 @@ export function Globe({ className, config = GLOBE_CONFIG }) {
       globe.destroy();
       window.removeEventListener("resize", onResize);
     };
-  }, [rs, config]);
+  }, [rs, config, prefersReducedMotion]);
 
   return (
     <div

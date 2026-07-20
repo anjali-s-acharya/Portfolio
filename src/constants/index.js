@@ -1,147 +1,48 @@
 export const myProjects = [
   {
     id: 1,
-    title: "Executive Connectivity Monitoring Platform",
+    title: "Interactive Network Topology Visualizer",
+    tagline: "MCP + LLM",
+    glyph: "topology",
     description:
-      "An internal network observability platform designed to proactively monitor connectivity for executive and critical users.",
+      "A full-stack network visualizer rendering live topology from a Cisco Modeling Labs sandbox, paired with a Claude-powered chat copilot for natural-language troubleshooting.",
     subDescription: [
-      "Designed and deployed using Python, Django, REST APIs, and LDAP for secure authentication.",
-      "Enabled proactive detection of network issues, significantly reducing reactive incidents.",
-      "Automated monitoring workflows to improve system reliability and operational efficiency.",
-      "Provided actionable insights through dashboards and reporting for leadership teams.",
+      "Engineered a Python MCP server (FastMCP) exposing topology, node-detail, show-command, path-finding, and graph-highlighting tools that let Claude query and reason over live network state.",
+      "Built an interactive topology graph with React and Cytoscape.js, served by a FastAPI backend that bridges the MCP server and a CML sandbox over REST and WebSocket.",
+      "Integrated Netmiko for read-only SSH show-commands against live lab nodes, surfaced directly inside chat-driven troubleshooting.",
+      "Let Claude highlight the relevant nodes and links on the graph in response to natural-language questions about the topology.",
     ],
-    href: "https://github.com/anjali-s-acharya/Portfolio",
-    logo: "",
-    image: "/assets/projects/accessories.jpg",
-    tags: [
-      { id: 1, name: "Python", path: "/assets/logos/python.svg" },
-      { id: 2, name: "Django", path: "/assets/logos/django.svg" },
-      { id: 3, name: "REST API", path: "/assets/logos/api.svg" },
-      { id: 4, name: "LDAP", path: "/assets/logos/lock.svg" },
-    ],
+    href: "https://github.com/anjali-s-acharya/network-visualizer",
+    tags: ["React", "Vite", "Cytoscape.js", "FastAPI", "Python", "MCP", "Claude"],
   },
   {
     id: 2,
-    title: "Firewall Rule Automation System",
+    title: "NetCode",
+    tagline: "Gamified network engineering practice",
+    glyph: "terminal",
     description:
-      "An in-house automation platform to standardize and accelerate firewall rule management.",
+      "A gamified learning and practice platform for network engineers, blending guided lessons, LeetCode-style troubleshooting challenges, and automation katas.",
     subDescription: [
-      "Engineered using Python, Django, and REST APIs to automate firewall rule creation and validation.",
-      "Reduced configuration errors and improved compliance with security standards.",
-      "Accelerated request turnaround time and delivered measurable cost savings.",
-      "Improved security posture through consistent and auditable automation workflows.",
+      "Built guided learning tracks for networking and coding fundamentals, plus LeetCode-style troubleshooting challenges with topology, logs, and CLI output to diagnose.",
+      "Built CodeOps, teaching network automation (Python, REST APIs, Netmiko, Ansible, Terraform) through real day-to-day automation tasks instead of tutorials.",
+      "Designed Capstone Labs that fuse diagnosis and automation into full-incident simulations with sequential unlock stages.",
+      "Shipped a gamified progress system — XP, levels, streaks, and a deterministic daily challenge — across 50+ seeded challenges spanning networking, security, and automation.",
     ],
-    href: "https://github.com/anjali-s-acharya/Portfolio",
-    logo: "",
-    image: "/assets/projects/auth-system.jpg",
-    tags: [
-      { id: 1, name: "Python", path: "/assets/logos/python.svg" },
-      { id: 2, name: "Django", path: "/assets/logos/django.svg" },
-      { id: 3, name: "Security Automation", path: "/assets/logos/shield.svg" },
-      { id: 4, name: "REST API", path: "/assets/logos/api.svg" },
-    ],
-  },
-  {
-    id: 3,
-    title: "Network Capacity & Reporting Automation",
-    description:
-      "Automation solution for switch port capacity monitoring and forecasting.",
-    subDescription: [
-      "Automated switch port capacity reporting using Python and REST APIs.",
-      "Eliminated manual data collection, reducing reporting effort by ~30%.",
-      "Improved accuracy for capacity planning and forecasting.",
-      "Enabled data-driven decision-making for network infrastructure scaling.",
-    ],
-    href: "https://github.com/anjali-s-acharya/Portfolio",
-    logo: "",
-    image: "/assets/projects/blazor-app.jpg",
-    tags: [
-      { id: 1, name: "Python", path: "/assets/logos/python.svg" },
-      { id: 2, name: "REST API", path: "/assets/logos/api.svg" },
-      { id: 3, name: "Automation", path: "/assets/logos/automation.svg" },
-      { id: 4, name: "Reporting", path: "/assets/logos/report.svg" },
-    ],
-  },
-  {
-    id: 4,
-    title: "ConnectX – Social Networking Platform",
-    description:
-      "A full-stack social networking platform supporting real-time communication and media sharing.",
-    subDescription: [
-      "Built user authentication, profile management, and real-time messaging features.",
-      "Implemented media sharing and interactive UI using React.js and Tailwind CSS.",
-      "Integrated Firebase for authentication and real-time data synchronization.",
-      "Designed scalable frontend architecture for smooth user experience.",
-    ],
-    href: "https://github.com/anjali-s-acharya/Portfolio",
-    logo: "",
-    image: "/assets/projects/game-engine.jpg",
-    tags: [
-      { id: 1, name: "React", path: "/assets/logos/react.svg" },
-      { id: 2, name: "TailwindCSS", path: "/assets/logos/tailwindcss.svg" },
-      { id: 3, name: "Firebase", path: "/assets/logos/firebase.svg" },
-      { id: 4, name: "JavaScript", path: "/assets/logos/javascript.svg" },
-    ],
-  },
-  {
-    id: 5,
-    title: "OrderFlow – Food Ordering Platform",
-    description:
-      "A role-based food ordering and operations platform with real-time order tracking.",
-    subDescription: [
-      "Developed a web-based platform using PHP, MySQL, and Bootstrap.",
-      "Implemented role-based access control for users and administrators.",
-      "Enabled real-time order tracking and cashless payments.",
-      "Improved operational efficiency and order accuracy for food services.",
-    ],
-    href: "https://github.com/anjali-s-acharya/Portfolio",
-    logo: "",
-    image: "/assets/projects/wordpress-theme.jpg",
-    tags: [
-      { id: 1, name: "PHP", path: "/assets/logos/php.svg" },
-      { id: 2, name: "MySQL", path: "/assets/logos/mysql.svg" },
-      { id: 3, name: "Bootstrap", path: "/assets/logos/bootstrap.svg" },
-      { id: 4, name: "Web Apps", path: "/assets/logos/web.svg" },
-    ],
-  },
-  {
-    id: 6,
-    title: "Hardware Asset Lifecycle Management",
-    description:
-      "A monitoring and lifecycle tracking solution for network hardware assets.",
-    subDescription: [
-      "Built and owned a complete hardware asset monitoring process.",
-      "Improved inventory visibility across network infrastructure.",
-      "Reduced audit effort and supported cost-optimization initiatives.",
-      "Enabled accurate asset lifecycle tracking through automation.",
-    ],
-    href: "https://github.com/anjali-s-acharya/Portfolio",
-    logo: "",
-    image: "/assets/projects/elearning.jpg",
-    tags: [
-      { id: 1, name: "Asset Management", path: "/assets/logos/inventory.svg" },
-      { id: 2, name: "Automation", path: "/assets/logos/automation.svg" },
-      { id: 3, name: "Python", path: "/assets/logos/python.svg" },
-      { id: 4, name: "Reporting", path: "/assets/logos/report.svg" },
-    ],
+    href: "https://github.com/anjali-s-acharya/NetCode",
+    tags: ["React", "Vite", "TypeScript", "FastAPI", "SQLAlchemy", "Python"],
   },
 ];
 
 export const mySocials = [
   {
-    name: "WhatsApp",
-    href: "",
-    icon: "/assets/socials/whatsApp.svg",
-  },
-  {
-    name: "Linkedin",
+    name: "LinkedIn",
     href: "https://www.linkedin.com/in/anjali-s-acharya/",
     icon: "/assets/socials/linkedIn.svg",
   },
   {
-    name: "Instagram",
-    href: "",
-    icon: "/assets/socials/instagram.svg",
+    name: "GitHub",
+    href: "https://github.com/anjali-s-acharya",
+    icon: "/assets/logos/github.svg",
   },
 ];
 
@@ -151,11 +52,8 @@ export const experiences = [
     job: "RV Institute of Technology and Management, Bengaluru",
     date: "2019 - 2023",
     contents: [
-      "Graduated with a CGPA of 8.2.",
-      "Received First Prize for Final Year Major Project for innovation and technical excellence.",
-      "Built strong fundamentals in Data Structures, Algorithms, Computer Networks, and Software Engineering.",
-      "Worked on academic projects related to cybersecurity and machine learning applications.",
-      "Published research and technical papers during the course of study.",
+      "Graduated with a CGPA of 8.2/10.",
+      "Relevant coursework: OOP, Data Structures & Algorithms, DBMS, SDLC, Operating Systems, and Computer Networks.",
     ],
   },
   {
@@ -163,42 +61,21 @@ export const experiences = [
     job: "Philips – Bengaluru",
     date: "Feb 2023 - Jul 2023",
     contents: [
-      "Built and enhanced automation tools using Python, Django, SQL, and REST APIs.",
-      "Gained hands-on experience with API-driven automation, monitoring workflows, and data handling.",
-      "Collaborated with senior engineers to streamline operational workflows and improve reliability.",
+      "Gained hands-on experience in network fundamentals, network automation, and API-driven integrations using Python and network libraries to interact with devices and management platforms.",
+      "Supported SD-LAN site migrations as part of the SME team, collaborating with network, security, and site stakeholders on implementation, validation, and operational readiness.",
     ],
   },
   {
-    title: "DevOps / Network Specialist",
+    title: "Software Engineer | IT Network Specialist",
     job: "Philips – Bengaluru",
     date: "Aug 2023 - Present",
     contents: [
-      "Designed and deployed network observability and automation platforms using Python, Django, REST APIs, and LDAP.",
-      "Automated switch port capacity reporting, reducing manual effort by ~30% and improving planning accuracy.",
-      "Engineered firewall rule automation platforms to standardize security workflows and reduce configuration errors.",
-      "Owned hardware asset lifecycle tracking to improve inventory visibility and audit efficiency.",
-      "Produced and presented monthly automation and performance reports to leadership.",
+      "Built MCP servers for Cisco Catalyst Center and vManage, exposing device, client, and network telemetry as AI-callable tools to power LLM-assisted troubleshooting — cutting time-to-diagnose by 40–45%.",
+      "Developed an Executive Connectivity Monitoring platform using Django, Python, DNAC APIs, and LDAP integration for proactive detection of connectivity issues affecting executive and critical users.",
+      "Built an in-house Firewall Rule Generation Tool (Django, JavaScript, SQL, FMC and 1DDI APIs), cutting firewall rule analysis effort by 35% and improving accuracy, flexibility, and control over rule management.",
+      "Automated operational reporting, validation, monitoring, and alerting across Catalyst Center, ISE, ThousandEyes, and FMC APIs, reducing manual effort by 25% and improving operational accuracy.",
+      "Built a training compliance workflow with Power Automate and AI Builder to monitor learning deadlines and trigger notifications, improving on-time compliance by 55–65%.",
+      "Authored technical documentation, runbooks, dashboards, and leadership-ready operational reports covering network hardware, licensing, and monitoring.",
     ],
-  },
-];
-
-export const reviews = [
-  {
-    name: "Jack",
-    username: "@jack",
-    body: "I've never seen anything like this before. It's amazing. I love it.",
-    img: "https://robohash.org/jack",
-  },
-  {
-    name: "Jill",
-    username: "@jill",
-    body: "I don't know what to say. I'm speechless. This is amazing.",
-    img: "https://robohash.org/jill",
-  },
-  {
-    name: "John",
-    username: "@john",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://robohash.org/john",
   },
 ];

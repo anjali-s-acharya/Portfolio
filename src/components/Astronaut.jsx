@@ -8,7 +8,7 @@ Title: Tenhun Falling spaceman (FanArt)
 
 import React, { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
-import { useMotionValue, useSpring } from "motion/react";
+import { useMotionValue, useReducedMotion, useSpring } from "motion/react";
 import { useFrame } from "@react-three/fiber";
 
 export function Astronaut(props) {
@@ -17,6 +17,7 @@ export function Astronaut(props) {
     "/models/tenhun_falling_spaceman_fanart.glb"
   );
   const { actions } = useAnimations(animations, group);
+  const prefersReducedMotion = useReducedMotion();
   useEffect(() => {
     if (animations.length > 0) {
       actions[animations[0].name]?.play();
@@ -28,8 +29,14 @@ export function Astronaut(props) {
   useEffect(() => {
     ySpring.set(-1);
   }, [ySpring]);
-  useFrame(() => {
-    group.current.position.y = ySpring.get();
+  useFrame((state) => {
+    const idleBob = prefersReducedMotion
+      ? 0
+      : Math.sin(state.clock.elapsedTime * 0.8) * 0.08;
+    group.current.position.y = ySpring.get() + idleBob;
+    if (!prefersReducedMotion) {
+      group.current.rotation.z = 2.2 + Math.sin(state.clock.elapsedTime * 0.5) * 0.03;
+    }
   });
   return (
     <group
